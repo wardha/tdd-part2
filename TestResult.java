@@ -7,6 +7,7 @@ package chapter20;
 public class TestResult {
 
     public int runCount;
+    private int errCount;
 
     TestResult() {
         runCount = 0;
@@ -14,6 +15,9 @@ public class TestResult {
 
     public void TestStarted() {
         runCount += 1;
+    }
+    public void TestFailes(){
+      errCount+=1;
     }
 
     public String summary() {

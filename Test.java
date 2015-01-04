@@ -44,11 +44,17 @@ public class Test extends TestCase {
         test.run();
         assert result.summary().equals("1 run, 1 failed");
     }
+    public void testFailedResultFormatting() throws Exception {
+        result= new TestResult();
+        result.TestStarted();
+        result.TestFailes();
+        assert result.summary().equals("1 run, 1 failed");
+    }
 
+    
     public static void main(String[] args) {
         try {
-            new Test("testRunning").run();
-            new Test("testSetUp").run();
+            new Test("testFailedResultFormatting").run();
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

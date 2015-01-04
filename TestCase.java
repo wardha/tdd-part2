@@ -23,10 +23,13 @@ public class TestCase {
         result.TestStarted();
         wasSetUp();
         Method method = this.getClass().getDeclaredMethod(this.name);
-        if (method != null) {
+        try{
             method.setAccessible(true);
             method.invoke(this);
         }
+        catch(Exception e){
+        result.TestFailes();
+         }
         tearDown();
         return result;
     }
