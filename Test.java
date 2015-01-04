@@ -2,12 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package chapter19;
+package chapter20;
 
-/**
- *
- * @author Dani
- */
+
+
 public class Test extends TestCase {
 
     private WasRun test;
@@ -17,8 +15,8 @@ public class Test extends TestCase {
     }
 
     @Override
-    public void setUp() {
-        test = new WasRun("testMethod");
+    public void wasSetUp()   {
+       test = new WasRun("testMethod");
     }
 
     public void testRunning() throws Exception {
@@ -28,7 +26,7 @@ public class Test extends TestCase {
 
     public void testSetUp() throws Exception {
         test.run();
-        assert test.wasSetUp();
+        assert test.wasRun();
     }
 
     public static void main(String[] args) {
@@ -36,7 +34,7 @@ public class Test extends TestCase {
             new Test("testRunning").run();
             new Test("testSetUp").run();
         } catch (Exception e) {
-// TODO Auto-generated catch block
+        // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

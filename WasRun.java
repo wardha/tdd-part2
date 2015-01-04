@@ -2,36 +2,34 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package chapter19;
+package chapter20;
 
-/**
- *
- * @author Dani
- */
+
 public class WasRun extends TestCase {
 
-    private boolean wasRun;
-    private boolean wasSetUp;
+    public boolean wasRun;
+    public boolean wasSetup;
+    public String log;
 
-    public WasRun(String testMethodName) {
-        super(testMethodName);
+    public WasRun(String name) {
+        super(name);
         this.wasRun = false;
     }
 
-    public boolean wasRun() {
-        return this.wasRun;
-    }
-
-    public boolean wasSetUp() {
-        return this.wasSetUp;
+    private void testMethod() {
+        wasRun = true;
     }
 
     @Override
-    public void setUp() {
-        this.wasSetUp = true;
+    public void wasSetUp() {
+        wasRun = false;
+        wasSetup = true;
+        log = "wasSetup";
     }
 
-    public void testMethod() {
-        this.wasRun = true;
+    boolean wasRun() {
+       return wasRun;
     }
+
+    
 }
