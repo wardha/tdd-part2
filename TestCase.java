@@ -6,10 +6,10 @@ package chapter20;
 
 import java.lang.reflect.Method;
 
-
 public class TestCase {
 
     protected String name;
+    protected TestResult result;
 
     public TestCase(String testMethodName) {
         this.name = testMethodName;
@@ -18,13 +18,17 @@ public class TestCase {
     public void wasSetUp() {
     }
 
-    public void run() throws Exception {
+    public TestResult run() throws Exception {
+        result = new TestResult();
+        result.TestStarted();
         wasSetUp();
         Method method = this.getClass().getDeclaredMethod(this.name);
         if (method != null) {
             method.setAccessible(true);
             method.invoke(this);
         }
+        tearDown();
+        return result;
     }
 
     public void tearDown() {

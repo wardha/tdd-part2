@@ -4,8 +4,6 @@
  */
 package chapter20;
 
-
-
 public class Test extends TestCase {
 
     private WasRun test;
@@ -15,8 +13,8 @@ public class Test extends TestCase {
     }
 
     @Override
-    public void wasSetUp()   {
-       test = new WasRun("testMethod");
+    public void wasSetUp() {
+        test = new WasRun("testMethod");
     }
 
     public void testRunning() throws Exception {
@@ -29,12 +27,30 @@ public class Test extends TestCase {
         assert test.wasRun();
     }
 
+    public void testTemplateMethod() throws Exception {
+        test = new WasRun("testMethod");
+        test.run();
+        assert test.log().equals("setUp testMethod tearDown ");
+    }
+
+    public void testResult() throws Exception {
+        test = new WasRun("testMethod");
+        test.run();
+        assert result.summary().equals("1 run, 0 failed");
+    }
+
+    public void testFailedResult() throws Exception {
+        test = new WasRun("testBrokenMethod");
+        test.run();
+        assert result.summary().equals("1 run, 1 failed");
+    }
+
     public static void main(String[] args) {
         try {
             new Test("testRunning").run();
             new Test("testSetUp").run();
         } catch (Exception e) {
-        // TODO Auto-generated catch block
+            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

@@ -4,7 +4,6 @@
  */
 package chapter20;
 
-
 public class WasRun extends TestCase {
 
     public boolean wasRun;
@@ -28,8 +27,14 @@ public class WasRun extends TestCase {
     }
 
     boolean wasRun() {
-       return wasRun;
+        return wasRun;
     }
 
-    
+    @Override
+    public void tearDown() {
+        log += "tearDown";
+    }
+    public String log(){
+    return log;
+    }
 }
